@@ -11,7 +11,7 @@
     <packaging>bundle</packaging>
     <url>https://github.com/USTC-INFINITELAB/floodlightpof</url>
     <name>onos-floodlightpof</name>
-    <version>1.0.0.onos-SNAPSHOT</version>
+    <version>1.0.1.onos</version>
     <description>onos pof controller protocol</description>
     <licenses>
         <license>
@@ -27,11 +27,11 @@
         <tag>floodlightpof-1.0.0</tag>
     </scm>
     <distributionManagement>
-        <repository>
-            <id>releases</id>
-            <name>Sonatype Release Repository</name>
-            <url>https://oss.sonatype.org/content/repositories/releases/</url>
-        </repository>
+        <!--<repository>-->
+            <!--<id>releases</id>-->
+            <!--<name>Sonatype Release Repository</name>-->
+            <!--<url>https://oss.sonatype.org/content/repositories/releases/</url>-->
+        <!--</repository>-->
         <snapshotRepository>
             <id>snapshots</id>
             <name>Sonatype Snapshot Repository</name>
@@ -99,18 +99,18 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
+                    <!--<plugin>-->
+                        <!--<groupId>org.apache.maven.plugins</groupId>-->
+                        <!--<artifactId>maven-javadoc-plugin</artifactId>-->
+                        <!--<executions>-->
+                            <!--<execution>-->
+                                <!--<id>attach-javadocs</id>-->
+                                <!--<goals>-->
+                                    <!--<goal>jar</goal>-->
+                                <!--</goals>-->
+                            <!--</execution>-->
+                        <!--</executions>-->
+                    <!--</plugin>-->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
