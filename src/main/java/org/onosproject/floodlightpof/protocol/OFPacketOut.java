@@ -93,19 +93,19 @@ public class OFPacketOut extends OFMessage implements OFActionFactoryAware {
 
     /**
      * Set in_port.
-     * @param inPoRt
+     * @param inPort
      */
-    public OFPacketOut setInPort(int inPoRt) {
-        this.inPort = inPoRt;
+    public OFPacketOut setInPort(int inPort) {
+        this.inPort = inPort;
         return this;
     }
 
     /**
      * Set in_port. Convenience method using OFPort enum.
-     * @param inPoRt
+     * @param inPort
      */
-    public OFPacketOut setInPort(OFPort inPoRt) {
-        this.inPort = inPoRt.getValue();
+    public OFPacketOut setInPort(OFPort inPort) {
+        this.inPort = inPort.getValue();
         return this;
     }
 
@@ -172,7 +172,11 @@ public class OFPacketOut extends OFMessage implements OFActionFactoryAware {
 
     @Override
     public void writeTo(ChannelBuffer data) {
-        super.writeTo(data);
+        //super.writeTo(data);
+        data.writeByte(version);
+        data.writeByte(type.getTypeValue());
+        data.writeShort(48*actions.size() + 24 + packetData.length);
+        data.writeInt(xid);
         data.writeInt(this.bufferId);
         data.writeInt(this.inPort);
         data.writeByte(this.actionsLength);
@@ -183,6 +187,9 @@ public class OFPacketOut extends OFMessage implements OFActionFactoryAware {
             if (action.getLength() < 48) {
                 data.writeBytes(PADDING, 0, 48 - action.getLength());
             }
+        }
+        if (this.packetData != null) {
+            data.writeBytes(this.packetData);
         }
         for (int i = 0; i < OFPMAXACTION_PERINSTRUCTION - this.actions.size(); i++) {
             data.writeBytes(PADDING, 0, 48);
